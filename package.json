@@ -1,6 +1,6 @@
 {
   "name": "ecc-dotfiles",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "This project contains common dotfiles for ui projects, e.g. for babel and eslint.",
   "main": "./install.js",
   "scripts": {
@@ -9,8 +9,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/elds/ecc-dotfiles"
+    "url": "https://github.com/elds/ecc-dotfiles.git"
   },
   "author": "eccenca GmbH <elds-support@eccenca.com> (http://eccenca.com)",
-  "license": "GPL"
+  "license": "GPL-3.0"
 }
