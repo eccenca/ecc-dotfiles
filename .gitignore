@@ -31,3 +31,5 @@ ui-test/*.svg
 .idea/
 
 #END
+
+!dotfiles/*
