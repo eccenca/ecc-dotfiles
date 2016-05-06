@@ -1,34 +1,31 @@
 #START
-# PLEASE PLACE CUSTOM NPM IGNORES BELOW #END
+# PLEASE PLACE CUSTOM GIT IGNORES BELOW #END
 #
 # ANYTHING YOU PLACE BEFORE THE END TAG
 # WILL BE OVERWRITTEN BY ecc-dotfiles
 # INSTALL-SCRIPT
 
-# ignore node_modules and debug log
+# node && npm
 node_modules/
 npm-debug.log
-
-# ignore git
-.git/
-.gitignore
-
-# ignore submodule files
-common-files/
-.gitmodules
-
-# ignore tests
-ui-test/
-test/
-
-# ignore coverage report
-coverage/
 
 # ignore symlinks
 .babelrc
 .editorconfig
 .eslintrc.yml
 Makefile
+
+# ignore coverage report
+coverage/
+
+# ignore compiled
+es5/
+ui-test/component.min.js
+ui-test/*.map
+ui-test/*.eot
+ui-test/*.woff*
+ui-test/*.ttf
+ui-test/*.svg
 
 # ignore data folders by jetbrains products
 .idea/
