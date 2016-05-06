@@ -1,6 +1,6 @@
 {
   "name": "ecc-dotfiles",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "This project contains common dotfiles for ui projects, e.g. for babel and eslint.",
   "main": "./install.js",
   "scripts": {
