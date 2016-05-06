@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/elds/ecc-dotfiles"
+    "url": "https://github.com/elds/ecc-dotfiles.git"
   },
   "author": "eccenca GmbH <elds-support@eccenca.com> (http://eccenca.com)",
   "license": "GPL-3.0"
