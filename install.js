@@ -16,12 +16,15 @@ var dotFilePath = path.join(cwd, 'dotfiles');
 // read all dotfiles
 var dotFiles = fs.readdirSync(dotFilePath);
 
-// console.log('dotfiles', dotFiles);
+
+process.chdir(destFolder);
+console.log('Changing working dir: ' + process.cwd());
 
 // create symlink for dotfiles
 dotFiles.forEach(function(file) {
-    var src = path.join(dotFilePath, file);
-    var dest = path.join(destFolder, file);
+    var dotfileTemplate = path.join(dotFilePath, file);
+    var dest = file;
+
     if (fs.existsSync(destFolder)) {
 
         if (fs.existsSync(dest)) {
@@ -29,7 +32,7 @@ dotFiles.forEach(function(file) {
 
             if (realPath === dest) {
                 console.warn('ATTENTION: real ' + file + ' exists, will not overwrite with symlink')
-            } else if (realPath === src) {
+            } else if (realPath === dotfileTemplate) {
                 console.info(file + ' is already correctly symlinked. Doing nothing.');
             } else if (typeof realPath === 'string') {
                 realPath = realPath.split(path.sep);
@@ -37,7 +40,7 @@ dotFiles.forEach(function(file) {
                 var d = e - 1;
                 var c = d - 1;
                 if (realPath[c] === 'common-files' && realPath[d] === 'dotfiles' && realPath[e] === file) {
-                    fs.unlink(dest, unlinkCallBack.bind(null, realPath, src, dest));
+                    fs.unlink(dest, unlinkCallBack.bind(null, realPath, dotfileTemplate, dest));
                 } else {
                     console.warn('ATTENTION: An alternative ' + file + ' exists which may be incompatible with ecc-dotfiles.')
                 }
@@ -45,7 +48,7 @@ dotFiles.forEach(function(file) {
                 console.warn('ATTENTION: An alternative ' + file + ' exists which may be incompatible with ecc-dotfiles.')
             }
         } else {
-            createSymlink(src, dest);
+            createSymlink(path.relative(destFolder, dotfileTemplate), file);
         }
 
 
@@ -59,7 +62,6 @@ feedTemplateIntoIgnoreFile(path.join(destFolder, '.gitignore'), path.join(templa
 
 console.info('');
 console.info('Finished ecc-dotfiles install.js');
-
 
 function feedTemplateIntoIgnoreFile(ignoreFile, templateFile) {
     console.info('Feeding Template into ' + ignoreFile + '.');
