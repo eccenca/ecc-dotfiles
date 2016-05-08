@@ -1,47 +1,66 @@
 #!/usr/bin/env node
+
 var fs = require('fs');
 var path = require('path');
 var eol = require('os').EOL;
 
-var cwd = process.cwd();
-
-var indexOf = cwd.indexOf('node_modules');
-
-var destFolder = path.join(cwd, path.relative(cwd, cwd.substr(0, indexOf)));
-
-console.info('Running ecc-dotfiles install.js');
+console.info('Running ecc-link-dotfiles');
 console.info('');
 
-var dotFilePath = path.join(cwd, 'dotfiles');
+// This should be the folder in which `ecc-link-dotfiles` is run
+var destFolder = process.cwd();
+
+var indexOf = destFolder.indexOf('node_modules');
+
+// If somehow we are not in the root of the node app, but somewhere in the node_modules folder
+if (indexOf >= 0) {
+    destFolder = path.join(destFolder, path.relative(destFolder, destFolder.substr(0, indexOf)));
+    process.chdir(destFolder)
+}
+
+console.info('Current working directory:', process.cwd());
+
+var dotfilePath = path.join(__dirname, 'dotfiles');
 
 // read all dotfiles
-var dotFiles = fs.readdirSync(dotFilePath);
+var dotfiles = fs.readdirSync(dotfilePath);
 
+// Create Symlink for each dotfile in the dotfiles folder
+dotfiles.forEach(createSymlinkToDotfileIfNeccessary.bind(null, dotfilePath, destFolder));
 
-process.chdir(destFolder);
-console.log('Changing working dir: ' + process.cwd());
+// Feed Template for each ignore file into the file
+var templatePath = path.join(__dirname, 'templates');
 
-// create symlink for dotfiles
-dotFiles.forEach(function(file) {
-    var dotfileTemplate = path.join(dotFilePath, file);
-    var dest = file;
+// read all dotfiles
+var templateFiles = fs.readdirSync(templatePath);
+
+templateFiles.forEach(feedTemplateIntoIgnoreFile.bind(null, templatePath, destFolder))
+
+console.info('');
+console.info('Finished ecc-link-dotfiles');
+
+//Functions below
+
+function createSymlinkToDotfileIfNeccessary(dotfilePath, destFolder, file) {
+    var realPath, e, d, c;
+    var dotfileTemplate = path.join(dotfilePath, file);
 
     if (fs.existsSync(destFolder)) {
 
-        if (fs.existsSync(dest)) {
-            var realPath = fs.realpathSync(dest);
+        if (fs.existsSync(file)) {
+            realPath = fs.realpathSync(file);
 
-            if (realPath === dest) {
+            if (realPath === file) {
                 console.warn('ATTENTION: real ' + file + ' exists, will not overwrite with symlink')
             } else if (realPath === dotfileTemplate) {
                 console.info(file + ' is already correctly symlinked. Doing nothing.');
             } else if (typeof realPath === 'string') {
                 realPath = realPath.split(path.sep);
-                var e = realPath.length - 1;
-                var d = e - 1;
-                var c = d - 1;
+                e = realPath.length - 1;
+                d = e - 1;
+                c = d - 1;
                 if (realPath[c] === 'common-files' && realPath[d] === 'dotfiles' && realPath[e] === file) {
-                    fs.unlink(dest, unlinkCallBack.bind(null, realPath, dotfileTemplate, dest));
+                    fs.unlink(file, unlinkCallBack.bind(null, realPath, dotfileTemplate, file));
                 } else {
                     console.warn('ATTENTION: An alternative ' + file + ' exists which may be incompatible with ecc-dotfiles.')
                 }
@@ -54,18 +73,34 @@ dotFiles.forEach(function(file) {
 
 
     }
-});
+}
 
-var templatePath = path.join(cwd, 'templates');
+function unlinkCallBack(file, src, dest, err) {
+    if (err === null) {
+        console.info('Symlink to old ' + file.join(path.sep) + ' successfully deleted');
+        createSymlink(src, dest);
+    }
+}
 
-feedTemplateIntoIgnoreFile(path.join(destFolder, '.npmignore'), path.join(templatePath, 'npmignore.template'));
-feedTemplateIntoIgnoreFile(path.join(destFolder, '.gitignore'), path.join(templatePath, 'gitignore.template'));
+function createSymlink(src, dest) {
+    if (!fs.existsSync(dest)) {
+        fs.symlinkSync(src, dest, 'file');
+        console.info('Create Symlink ' + dest + ' -> ' + src);
+    } else {
+        console.info(dest + ' already exists. Doing nothing.');
+    }
+}
 
-console.info('');
-console.info('Finished ecc-dotfiles install.js');
+function feedTemplateIntoIgnoreFile(templateFilePath, ignoreFilePath, templateFileName) {
 
-function feedTemplateIntoIgnoreFile(ignoreFile, templateFile) {
-    console.info('Feeding Template into ' + ignoreFile + '.');
+    var ignoreFileName = '.' + templateFileName.replace('.template', '');
+
+    var ignoreFile = path.join(ignoreFilePath, ignoreFileName);
+    var templateFile = path.join(templateFilePath, templateFileName);
+
+    console.info('Feeding Template ' + path.relative(destFolder, templateFile) + ' into ' + ignoreFileName + '.');
+
+
     if (fs.existsSync(ignoreFile)) {
         var contents =
             fs.readFileSync(ignoreFile, 'utf8');
@@ -101,21 +136,5 @@ function feedTemplateIntoIgnoreFile(ignoreFile, templateFile) {
         });
         result = result.join(eol).replace(/(\r?\n)+$/i, eol);
         fs.writeFileSync(ignoreFile, result)
-    }
-}
-
-function createSymlink(src, dest) {
-    if (!fs.existsSync(dest)) {
-        fs.symlinkSync(src, dest, 'file');
-        console.info('Create Symlink to ' + dest);
-    } else {
-        console.info(dest + ' already exists. Doing nothing.');
-    }
-}
-
-function unlinkCallBack(file, src, dest, err) {
-    if (err === null) {
-        console.info('Symlink to old ' + file.join(path.sep) + ' successfully deleted');
-        createSymlink(src, dest);
     }
 }
