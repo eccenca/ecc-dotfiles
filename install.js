@@ -45,6 +45,8 @@ function createSymlinkToDotfileIfNeccessary(dotfilePath, destFolder, file) {
     var realPath, e, d, c;
     var dotfileTemplate = path.join(dotfilePath, file);
 
+    var relativePath = path.relative(destFolder, dotfileTemplate);
+
     if (fs.existsSync(destFolder)) {
 
         if (fs.existsSync(file)) {
@@ -60,7 +62,7 @@ function createSymlinkToDotfileIfNeccessary(dotfilePath, destFolder, file) {
                 d = e - 1;
                 c = d - 1;
                 if (realPath[c] === 'common-files' && realPath[d] === 'dotfiles' && realPath[e] === file) {
-                    fs.unlink(file, unlinkCallBack.bind(null, realPath, dotfileTemplate, file));
+                    fs.unlink(file, unlinkCallBack.bind(null, relativePath, file));
                 } else {
                     console.warn('ATTENTION: An alternative ' + file + ' exists which may be incompatible with ecc-dotfiles.')
                 }
@@ -68,23 +70,22 @@ function createSymlinkToDotfileIfNeccessary(dotfilePath, destFolder, file) {
                 console.warn('ATTENTION: An alternative ' + file + ' exists which may be incompatible with ecc-dotfiles.')
             }
         } else {
-            createSymlink(path.relative(destFolder, dotfileTemplate), file);
+            createSymlink(relativePath, file);
         }
-
 
     }
 }
 
-function unlinkCallBack(file, src, dest, err) {
+function unlinkCallBack(src, dest, err) {
     if (err === null) {
-        console.info('Symlink to old ' + file.join(path.sep) + ' successfully deleted');
-        createSymlink(src, dest);
+        console.info('Symlink to old ' + dest + ' successfully deleted');
+        fs.symlinkSync(src, dest, 'file');
     }
 }
 
 function createSymlink(src, dest) {
     if (!fs.existsSync(dest)) {
-        fs.symlinkSync(src, dest, 'file');
+        fs.unlink(dest, fs.symlinkSync.bind(null, src, dest, 'file'));
         console.info('Create Symlink ' + dest + ' -> ' + src);
     } else {
         console.info(dest + ' already exists. Doing nothing.');
