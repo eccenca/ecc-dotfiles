@@ -14,5 +14,8 @@
     "url": "https://github.com/elds/ecc-dotfiles.git"
   },
   "author": "eccenca GmbH <elds-support@eccenca.com> (http://eccenca.com)",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/elds/ecc-dotfiles/issues"
+  }
 }
