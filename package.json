@@ -17,5 +17,8 @@
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/elds/ecc-dotfiles/issues"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
   }
 }
