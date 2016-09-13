@@ -32,4 +32,4 @@ ui-test/*.svg
 
 #END
 
-!dotfiles/*
+!linkFiles/*

@@ -20,5 +20,8 @@
   },
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "fs-extra": "^0.30.0"
   }
 }
