@@ -39,4 +39,5 @@ gulpfile.js
 
 #END
 
-!dotfiles/*
+!linkFiles/*
+!copyFiles/*
