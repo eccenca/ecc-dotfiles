@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
+var fs = require('fs-extra');
 var path = require('path');
 var eol = require('os').EOL;
 
@@ -19,6 +19,18 @@ if (indexOf >= 0) {
 }
 
 console.info('Current working directory:', process.cwd());
+
+var copyFiles = path.join(__dirname, 'copyFiles');
+
+try {
+    fs.copySync(copyFiles, destFolder, {
+        clobber: true
+    });
+    console.log("Copied .dotfiles");
+} catch (err) {
+    console.log("Error copying .dotfiles");
+    console.error(err)
+}
 
 var dotfilePath = path.join(__dirname, 'linkFiles');
 
@@ -79,7 +91,7 @@ function createSymlinkToDotfileIfNeccessary(dotfilePath, destFolder, file) {
 function unlinkCallBack(src, dest, err) {
     if (err === null) {
         console.info('Symlink to old ' + dest + ' successfully deleted');
-        fs.symlinkSync(src, dest, 'file');
+        fs.ensureSymlinkSync(src, dest);
     }
 }
 
