@@ -1,6 +1,6 @@
 {
   "name": "ecc-dotfiles",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "bin": {
     "ecc-link-dotfiles": "./install.js"
   },
@@ -20,5 +20,8 @@
   },
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "fs-extra": "^0.30.0"
   }
 }
