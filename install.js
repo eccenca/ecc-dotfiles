@@ -20,7 +20,7 @@ if (indexOf >= 0) {
 
 console.info('Current working directory:', process.cwd());
 
-var dotfilePath = path.join(__dirname, 'dotfiles');
+var dotfilePath = path.join(__dirname, 'linkFiles');
 
 // read all dotfiles
 var dotfiles = fs.readdirSync(dotfilePath);
@@ -34,7 +34,7 @@ var templatePath = path.join(__dirname, 'templates');
 // read all dotfiles
 var templateFiles = fs.readdirSync(templatePath);
 
-templateFiles.forEach(feedTemplateIntoIgnoreFile.bind(null, templatePath, destFolder))
+templateFiles.forEach(feedTemplateIntoIgnoreFile.bind(null, templatePath, destFolder));
 
 console.info('');
 console.info('Finished ecc-link-dotfiles');
