@@ -4,6 +4,7 @@ parser: babel-eslint
 globals:
   __DEBUG__: true
   __WEBPACK__: true
+  __VERSION: true
 env:
   # I write for browser
   browser: true
