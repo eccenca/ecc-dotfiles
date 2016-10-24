@@ -1,13 +1,13 @@
 {
   "name": "ecc-dotfiles",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "bin": {
     "ecc-link-dotfiles": "./install.js"
   },
   "description": "This project contains common dotfiles for ui projects, e.g. for babel and eslint.",
   "main": "./install.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "eslint --quiet --print-config linkFiles/.eslintrc.yml"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,10 @@
   },
   "dependencies": {
     "fs-extra": "^0.30.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.0.0",
+    "eslint": "^3.8.1",
+    "eslint-plugin-react": "^6.4.1"
   }
 }
