@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog's Format](http://keepachangelog.com/).
 
+## [1.8.0] 2016-11-10
+
+### Added
+- yarn related files to ignore files
+
+### Fixed
+- correct Makefile editorconfig
+- correct global variable `__VERSION__`
+
 ## [1.7.1] 2016-10-24
 
 ### Fixed
