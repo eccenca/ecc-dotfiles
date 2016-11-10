@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Ch
 
 ## [Unreleased]
 
+### Added
+- yarn related files to ignore files
+
 ### Fixed
 - correct Makefile editorconfig
 - correct global variable `__VERSION__`
