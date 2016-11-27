@@ -1,6 +1,6 @@
 {
   "name": "ecc-dotfiles",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "bin": {
     "ecc-link-dotfiles": "./install.js"
   },
@@ -22,7 +22,7 @@
     "registry": "http://registry.npmjs.org/"
   },
   "dependencies": {
-    "fs-extra": "^0.30.0"
+    "fs-extra": "^1.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.0.0",
