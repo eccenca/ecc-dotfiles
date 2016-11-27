@@ -1,71 +1,66 @@
 #!/usr/bin/env node
 
-var fs = require('fs-extra');
-var path = require('path');
-var eol = require('os').EOL;
+/* eslint no-console: "off", no-use-before-define: "error" */
+
+const fs = require('fs-extra');
+const path = require('path');
+const eol = require('os').EOL;
 
 console.info('Running ecc-link-dotfiles');
 console.info('');
 
 // This should be the folder in which `ecc-link-dotfiles` is run
-var destFolder = process.cwd();
+let destFolder = process.cwd();
 
-var indexOf = destFolder.indexOf('node_modules');
+const indexOf = destFolder.indexOf('node_modules');
 
 // If somehow we are not in the root of the node app, but somewhere in the node_modules folder
 if (indexOf >= 0) {
     destFolder = path.join(destFolder, path.relative(destFolder, destFolder.substr(0, indexOf)));
-    process.chdir(destFolder)
+    process.chdir(destFolder);
 }
 
 console.info('Current working directory:', process.cwd());
 
-var copyFiles = path.join(__dirname, 'copyFiles');
+const copyFiles = path.join(__dirname, 'copyFiles');
 
 try {
     fs.copySync(copyFiles, destFolder, {
-        clobber: true
+        clobber: true,
     });
-    console.log("Copied .dotfiles");
+    console.log('Copied .dotfiles');
 } catch (err) {
-    console.log("Error copying .dotfiles");
-    console.error(err)
+    console.log('Error copying .dotfiles');
+    console.error(err);
 }
 
 // Feed Template for each ignore file into the file
-var templatePath = path.join(__dirname, 'templates');
+const templatePath = path.join(__dirname, 'templates');
 
 // read all dotfiles
-var templateFiles = fs.readdirSync(templatePath);
+const templateFiles = fs.readdirSync(templatePath);
 
-templateFiles.forEach(feedTemplateIntoIgnoreFile.bind(null, templatePath, destFolder));
+templateFiles.forEach((templateFileName) => {
 
-console.info('');
-console.info('Finished ecc-link-dotfiles');
+    const ignoreFileName = '.' + templateFileName.replace('.template', '');
 
-//Functions below
-
-function feedTemplateIntoIgnoreFile(templateFilePath, ignoreFilePath, templateFileName) {
-
-    var ignoreFileName = '.' + templateFileName.replace('.template', '');
-
-    var ignoreFile = path.join(ignoreFilePath, ignoreFileName);
-    var templateFile = path.join(templateFilePath, templateFileName);
+    const ignoreFile = path.join(destFolder, ignoreFileName);
+    const templateFile = path.join(templatePath, templateFileName);
 
     console.info('Feeding Template ' + path.relative(destFolder, templateFile) + ' into ' + ignoreFileName + '.');
 
 
     if (fs.existsSync(ignoreFile)) {
-        var contents =
+        let contents =
             fs.readFileSync(ignoreFile, 'utf8');
         contents = contents.replace(/#START[\s\S]+#END/igm,
             '').replace(/^(\s*\r?\n)+/i, '');
         contents = fs.readFileSync(templateFile, 'utf8') + eol + contents;
         contents =
             contents.split(/\r?\n/);
-        var ignored = [];
-        var result = [];
-        var addAll = false;
+        const ignored = [];
+        let result = [];
+        let addAll = false;
         contents.forEach(function(line) {
             if (line === '') {
                 result.push(line);
@@ -89,6 +84,9 @@ function feedTemplateIntoIgnoreFile(templateFilePath, ignoreFilePath, templateFi
             }
         });
         result = result.join(eol).replace(/(\r?\n)+$/i, eol);
-        fs.writeFileSync(ignoreFile, result)
+        fs.writeFileSync(ignoreFile, result);
     }
-}
+});
+
+console.info('');
+console.info('Finished ecc-link-dotfiles');
