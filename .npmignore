@@ -28,9 +28,6 @@ test/
 coverage/
 
 # ignore dotfiles
-.babelrc
-.editorconfig
-.eslintrc.yml
 Makefile
 
 # ignore gulpfile
