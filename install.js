@@ -32,14 +32,6 @@ try {
     console.error(err)
 }
 
-var dotfilePath = path.join(__dirname, 'linkFiles');
-
-// read all dotfiles
-var dotfiles = fs.readdirSync(dotfilePath);
-
-// Create Symlink for each dotfile in the dotfiles folder
-dotfiles.forEach(createSymlinkToDotfileIfNeccessary.bind(null, dotfilePath, destFolder));
-
 // Feed Template for each ignore file into the file
 var templatePath = path.join(__dirname, 'templates');
 
@@ -52,57 +44,6 @@ console.info('');
 console.info('Finished ecc-link-dotfiles');
 
 //Functions below
-
-function createSymlinkToDotfileIfNeccessary(dotfilePath, destFolder, file) {
-    var realPath, e, d, c;
-    var dotfileTemplate = path.join(dotfilePath, file);
-
-    var relativePath = path.relative(destFolder, dotfileTemplate);
-
-    if (fs.existsSync(destFolder)) {
-
-        if (fs.existsSync(file)) {
-            realPath = fs.realpathSync(file);
-
-            if (realPath === file) {
-                console.warn('ATTENTION: real ' + file + ' exists, will not overwrite with symlink')
-            } else if (realPath === dotfileTemplate) {
-                console.info(file + ' is already correctly symlinked. Doing nothing.');
-            } else if (typeof realPath === 'string') {
-                realPath = realPath.split(path.sep);
-                e = realPath.length - 1;
-                d = e - 1;
-                c = d - 1;
-                if (realPath[c] === 'common-files' && realPath[d] === 'dotfiles' && realPath[e] === file) {
-                    fs.unlink(file, unlinkCallBack.bind(null, relativePath, file));
-                } else {
-                    console.warn('ATTENTION: An alternative ' + file + ' exists which may be incompatible with ecc-dotfiles.')
-                }
-            } else {
-                console.warn('ATTENTION: An alternative ' + file + ' exists which may be incompatible with ecc-dotfiles.')
-            }
-        } else {
-            createSymlink(relativePath, file);
-        }
-
-    }
-}
-
-function unlinkCallBack(src, dest, err) {
-    if (err === null) {
-        console.info('Symlink to old ' + dest + ' successfully deleted');
-        fs.ensureSymlinkSync(src, dest);
-    }
-}
-
-function createSymlink(src, dest) {
-    if (!fs.existsSync(dest)) {
-        fs.unlink(dest, fs.symlinkSync.bind(null, src, dest, 'file'));
-        console.info('Create Symlink ' + dest + ' -> ' + src);
-    } else {
-        console.info(dest + ' already exists. Doing nothing.');
-    }
-}
 
 function feedTemplateIntoIgnoreFile(templateFilePath, ignoreFilePath, templateFileName) {
 
