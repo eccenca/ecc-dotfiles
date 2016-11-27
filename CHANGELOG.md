@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog's Format](http://keepachangelog.com/).
 
+## [Unreleased]
+### Fixed
+- npmignore ignores dotfiles again
+- rename deprecated eslint parameter
+
+## [1.9.0] 2016-11-27
+### Changed
+- dotfiles are now copied instead of being symlinked.
+
 ## [1.8.0] 2016-11-10
 
 ### Added
