@@ -18,6 +18,7 @@ coverage/
 
 # ignore compiled
 es5/
+.tmp/
 
 # ignore data folders by jetbrains products
 .idea/
