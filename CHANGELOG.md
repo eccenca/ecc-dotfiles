@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog's Format](http://keepachangelog.com/).
 
+## [1.11.0] 2017-01-02
+### Changed
+- Added .tmp build folder to git and npmignore
+
 ## [1.10.0] 2017-01-02
 ### Changed
 - removed unnecessary files from .gitignore 

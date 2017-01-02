@@ -39,6 +39,9 @@ gulpfile.js
 # ignore data folders by jetbrains products
 .idea/
 
+# ignore compiled
+.tmp/
+
 #END
 
 !linkFiles/*
