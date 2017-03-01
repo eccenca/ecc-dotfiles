@@ -6,6 +6,9 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Ch
 ### Changed
 - Upgraded dependencies
 
+### Removed
+- application merge templates
+
 ## [1.11.0] 2017-01-02
 ### Changed
 - Added .tmp build folder to git and npmignore
