@@ -2,7 +2,22 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog's Format](http://keepachangelog.com/).
 
-## [1.12.0] 2017-03-01 
+## [2.0.0] 2017-07-30
+
+### Changed
+- Breaking: eslint now needs the following dependencies (which will be provided in a new version ecc-gulp-tasks)
+    - "babel-eslint": "^7.2.3"
+    - "eslint": "^3.19.0"
+    - "eslint-config-airbnb": "^15.1.0"
+    - "eslint-config-prettier": "^2.3.0"
+    - "eslint-plugin-import": "^2.7.0"
+    - "eslint-plugin-jsx-a11y": "^5.1.1"
+    - "eslint-plugin-prettier": "^2.1.2"
+    - "eslint-plugin-react": "^7.1.0"
+    - "prettier": "^1.5.3"
+- Upgraded dependencies
+
+## [1.12.0] 2017-03-01
 ### Changed
 - Upgraded dependencies
 
@@ -15,7 +30,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Ch
 
 ## [1.10.0] 2017-01-02
 ### Changed
-- removed unnecessary files from .gitignore 
+- removed unnecessary files from .gitignore
 
 ## [1.9.1] 2016-11-27
 ### Fixed

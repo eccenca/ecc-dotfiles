@@ -1,13 +1,14 @@
 {
   "name": "ecc-dotfiles",
-  "version": "1.12.0",
+  "version": "2.0.0",
   "bin": {
     "ecc-link-dotfiles": "./install.js"
   },
   "description": "This project contains common dotfiles for ui projects, e.g. for babel and eslint.",
   "main": "./install.js",
   "scripts": {
-    "test": "eslint --quiet --print-config linkFiles/.eslintrc.yml"
+    "test": "./install.js && eslint --print-config .eslintrc.yml && eslint --print-config .eslintrc.yml | eslint-config-prettier-check",
+    "lint": "eslint ./install.js --fix"
   },
   "repository": {
     "type": "git",
@@ -22,11 +23,17 @@
     "registry": "http://registry.npmjs.org/"
   },
   "dependencies": {
-    "fs-extra": "^2.0.0"
+    "fs-extra": "^4.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "^7.0.0",
-    "eslint": "^3.8.1",
-    "eslint-plugin-react": "^6.4.1"
+    "babel-eslint": "^7.2.3",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "^2.1.2",
+    "eslint-plugin-react": "^7.1.0",
+    "prettier": "^1.5.3"
   }
 }

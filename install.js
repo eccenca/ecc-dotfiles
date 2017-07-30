@@ -16,7 +16,10 @@ const indexOf = destFolder.indexOf('node_modules');
 
 // If somehow we are not in the root of the node app, but somewhere in the node_modules folder
 if (indexOf >= 0) {
-    destFolder = path.join(destFolder, path.relative(destFolder, destFolder.substr(0, indexOf)));
+    destFolder = path.join(
+        destFolder,
+        path.relative(destFolder, destFolder.substr(0, indexOf))
+    );
     process.chdir(destFolder);
 }
 
@@ -26,7 +29,7 @@ const copyFiles = path.join(__dirname, 'copyFiles');
 
 try {
     fs.copySync(copyFiles, destFolder, {
-        clobber: true,
+        clobber: true
     });
     console.log('Copied .dotfiles');
 } catch (err) {
@@ -40,35 +43,36 @@ const templatePath = path.join(__dirname, 'templates');
 // read all dotfiles
 const templateFiles = fs.readdirSync(templatePath);
 
-templateFiles.forEach((templateFileName) => {
-
-    const ignoreFileName = '.' + templateFileName.replace('.template', '');
+templateFiles.forEach(templateFileName => {
+    const ignoreFileName = `.${templateFileName.replace('.template', '')}`;
 
     const ignoreFile = path.join(destFolder, ignoreFileName);
     const templateFile = path.join(templatePath, templateFileName);
 
-    console.info('Feeding Template ' + path.relative(destFolder, templateFile) + ' into ' + ignoreFileName + '.');
-
+    console.info(
+        `Feeding Template ${path.relative(
+            destFolder,
+            templateFile
+        )} into ${ignoreFileName}.`
+    );
 
     if (fs.existsSync(ignoreFile)) {
-        let contents =
-            fs.readFileSync(ignoreFile, 'utf8');
-        contents = contents.replace(/#START[\s\S]+#END/igm,
-            '').replace(/^(\s*\r?\n)+/i, '');
+        let contents = fs.readFileSync(ignoreFile, 'utf8');
+        contents = contents
+            .replace(/#START[\s\S]+#END/gim, '')
+            .replace(/^(\s*\r?\n)+/i, '');
         contents = fs.readFileSync(templateFile, 'utf8') + eol + contents;
-        contents =
-            contents.split(/\r?\n/);
+        contents = contents.split(/\r?\n/);
         const ignored = [];
         let result = [];
         let addAll = false;
-        contents.forEach(function(line) {
+        contents.forEach(line => {
             if (line === '') {
                 result.push(line);
                 return;
             }
             if (line.match(/^\s*#/) === null) {
-                if (addAll || ignored.indexOf(line)
-                    === -1) {
+                if (addAll || ignored.indexOf(line) === -1) {
                     ignored.push(line);
                     result.push(line);
                 }
@@ -76,8 +80,7 @@ templateFiles.forEach((templateFileName) => {
                 result.push(line);
             }
             if (line === '#START') {
-                addAll =
-                    true;
+                addAll = true;
             }
             if (line === '#END') {
                 addAll = false;
