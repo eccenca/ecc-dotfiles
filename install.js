@@ -29,7 +29,7 @@ const copyFiles = path.join(__dirname, 'copyFiles');
 
 try {
     fs.copySync(copyFiles, destFolder, {
-        clobber: true
+        clobber: true,
     });
     console.log('Copied .dotfiles');
 } catch (err) {
