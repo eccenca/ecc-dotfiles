@@ -18,7 +18,7 @@ const indexOf = destFolder.indexOf('node_modules');
 if (indexOf >= 0) {
     destFolder = path.join(
         destFolder,
-        path.relative(destFolder, destFolder.substr(0, indexOf)),
+        path.relative(destFolder, destFolder.substr(0, indexOf))
     );
     process.chdir(destFolder);
 }
@@ -29,7 +29,7 @@ const copyFiles = path.join(__dirname, 'copyFiles');
 
 try {
     fs.copySync(copyFiles, destFolder, {
-        clobber: true,
+        clobber: true
     });
     console.log('Copied .dotfiles');
 } catch (err) {
@@ -52,8 +52,8 @@ templateFiles.forEach(templateFileName => {
     console.info(
         `Feeding Template ${path.relative(
             destFolder,
-            templateFile,
-        )} into ${ignoreFileName}.`,
+            templateFile
+        )} into ${ignoreFileName}.`
     );
 
     if (fs.existsSync(ignoreFile)) {

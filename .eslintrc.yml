@@ -25,8 +25,9 @@ rules:
   prettier/prettier:
     - error
     - singleQuote: true
-      trailingComma: all
+      trailingComma: es6
       bracketSpacing: false
       jsxBracketSameLine: true
       tabWidth: 4
   no-plusplus: ["error", { "allowForLoopAfterthoughts": true }]
+  no-use-before-define: ["warn"]
