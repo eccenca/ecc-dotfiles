@@ -25,7 +25,7 @@ rules:
   prettier/prettier:
     - error
     - singleQuote: true
-      trailingComma: es6
+      trailingComma: es5
       bracketSpacing: false
       jsxBracketSameLine: true
       tabWidth: 4
