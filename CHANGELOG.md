@@ -4,7 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Ch
 
 ## [Unreleased]
 
-TODO: add at least one Added, Changed, Deprecated, Removed, Fixed or Security section
+### Added
+
+- added `no-warning-comments` to eslint rules
 
 ## [2.0.1] 2017-07-30
 
