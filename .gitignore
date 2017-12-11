@@ -25,4 +25,5 @@ es5/
 
 #END
 
-!linkFiles/*
+!linkFiles/**/*
+!copyFiles/**/*
