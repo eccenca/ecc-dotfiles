@@ -4,7 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Ch
 
 ## [Unreleased]
 
-TODO: add at least one Added, Changed, Deprecated, Removed, Fixed or Security section
+### Changed
+ -  strictness of several eslint checks has been lowered:
+      -  `import/no-extraneous-dependencies` does not error in ui-test and test folders anymore
+      -  `react/jsx-no-bind`, `react/forbid-prop-types`, `react/prefer-es6-class`,
+          `react/prop-types`, `react/require-default-props` and `react/sort-comp`
+
 
 ## [2.2.0] 2017-11-01
 
