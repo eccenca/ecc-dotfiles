@@ -1,6 +1,6 @@
 {
   "name": "@eccenca/dotfiles",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "bin": {
     "ecc-link-dotfiles": "./install.js"
   },

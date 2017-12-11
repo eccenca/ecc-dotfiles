@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog's Format](http://keepachangelog.com/).
 
+## [2.3.1] 2017-12-11
+
+### Fixed
+- Make sure yarn includes all files in `copyFiles` and `linkFiles`
+
 ## [2.3.0] 2017-12-11
 
 ### Changed
