@@ -23,7 +23,7 @@
     "registry": "http://registry.npmjs.org/"
   },
   "dependencies": {
-    "fs-extra": "^4.0.0"
+    "fs-extra": "^5.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

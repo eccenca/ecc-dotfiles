@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Ch
 
 ### Fixed
 - ignore gulpfile and buildConfig in root dev dependency check
+- npm registry in yarn lock
 
 ## [2.3.1] 2017-12-11
 
