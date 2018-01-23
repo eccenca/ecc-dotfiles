@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog's Format](http://keepachangelog.com/).
 
-## [Unreleased]
+## [2.3.2] 2018-01-23
 
 ### Fixed
 - ignore gulpfile and buildConfig in root dev dependency check
