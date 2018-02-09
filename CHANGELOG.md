@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog's Format](http://keepachangelog.com/).
 
+## [2.4.0] 2018-02-09
+
+### Changed
+- Turn `react/jsx-boolean-value` off
+
 ## [2.3.2] 2018-01-23
 
 ### Fixed
