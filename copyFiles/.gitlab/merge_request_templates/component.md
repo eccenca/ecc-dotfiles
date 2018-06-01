@@ -2,7 +2,7 @@ Issue(s):
 
 **Coder**
 
-I confirm that...
+I confirm that regarding my changed code...
 
 ***General***
 
@@ -46,7 +46,7 @@ I confirm that...
 
 **Reviewer**
 
-I confirm that...
+I confirm that regarding the changed code...
 
 ***General***
 
