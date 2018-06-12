@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog's Format](http://keepachangelog.com/).
 
+## [2.5.1] 2018-06-12
+
+### Added
+- add eslintignore template
+
+### Changed
+- template for component merge request
+
 ## [2.5.0] 2018-02-13
 
 ### Changed
