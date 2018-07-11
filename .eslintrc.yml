@@ -37,7 +37,7 @@ rules:
   semi-spacing: ["error", {"before": false, "after": true}]
   prefer-destructuring: ["warn"]
   no-plusplus: ["error", { "allowForLoopAfterthoughts": true }]
-  no-use-before-define: ["warn"]
+  no-use-before-define: ["error"]
   no-warning-comments: [
     "warn",
     {
