@@ -7,7 +7,6 @@ plugins:
   - react
   - jsx-a11y
   - import
-  - prettier
 env:
   browser: true
   es6: true
@@ -22,15 +21,20 @@ parserOptions:
      # enable JSX support
       jsx: true
 rules:
-  prettier/prettier:
-    - error
-    - singleQuote: true
-      trailingComma: es5
-      bracketSpacing: false
-      jsxBracketSameLine: true
-      tabWidth: 4
-      printWidth: 80
-      semi: true
+  # use only single quotes/backquotes for strings 
+  quotes: ["error", "single"]
+  # trailing commas are mandatory
+  comma-dangle: ["error", "always"]
+  # spaces inside non-empty objects between brackets & content
+  object-curly-spacing: ["error", "always"] 
+  # indentation made with spaces not tabs
+  indent: ["error", 4]
+  # lines are max. 100 signs long
+  max-len: ["error", { "code": 100 }]  
+  # a line ends with semicolon, period
+  semi: ["error", "always"]
+  # addon to 'semi', cares about spaces before and after semicolon usage
+  semi-spacing: ["error", {"before": false, "after": true}]
   prefer-destructuring: ["warn"]
   no-plusplus: ["error", { "allowForLoopAfterthoughts": true }]
   no-use-before-define: ["warn"]
@@ -60,3 +64,5 @@ rules:
   react/require-default-props: ["warn"]
   react/sort-comp: ["warn"]
   react/jsx-boolean-value: ["off"]
+  # align closing react component bracket with opening bracket
+  react/jsx-closing-bracket: [1, 'line-aligned']
