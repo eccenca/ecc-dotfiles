@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Ch
 
 ## [Unreleased]
 
-TODO: add at least one Added, Changed, Deprecated, Removed, Fixed or Security section
+### Added
+- MR template now contains a checkbox for queries
 
 ## [2.5.1] 2018-06-12
 
