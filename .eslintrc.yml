@@ -83,3 +83,5 @@ rules:
   react/jsx-boolean-value: ["off"]
   # align closing react component bracket with opening bracket
   react/jsx-closing-bracket: [1, 'line-aligned']
+  # limit the max amount of conditionals
+  complexity: ["error", { "max": 4 }]
