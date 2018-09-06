@@ -74,6 +74,10 @@ rules:
       ]
     }
   ]
+  # limit the max amount of conditionals 
+  complexity: ["error", { "max": 4 }]
+  # allow functions with a maximum of 50 lines
+  max-lines-per-function: ["error", { "max": 50 }]
   react/jsx-no-bind: ["warn"]
   react/forbid-prop-types: ["warn"]
   react/prefer-es6-class: ["warn"]
@@ -82,6 +86,4 @@ rules:
   react/sort-comp: ["warn"]
   react/jsx-boolean-value: ["off"]
   # align closing react component bracket with opening bracket
-  react/jsx-closing-bracket: [1, 'line-aligned']
-  # limit the max amount of conditionals
-  complexity: ["error", { "max": 4 }]
+  react/jsx-closing-bracket: [1, "line-aligned"]
