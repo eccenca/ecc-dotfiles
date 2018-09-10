@@ -7,7 +7,7 @@
   "description": "This project contains common dotfiles for ui projects, e.g. for babel and eslint.",
   "main": "./install.js",
   "scripts": {
-    "test": "./install.js && eslint --print-config .eslintrc.yml && eslint --print-config .eslintrc.yml | eslint-config-prettier-check",
+    "test": "./install.js && eslint --print-config .eslintrc.yml && eslint --print-config .eslintrc.yml",
     "lint": "eslint ./install.js --fix"
   },
   "repository": {
@@ -29,11 +29,8 @@
     "babel-eslint": "^7.2.3",
     "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.6.1",
-    "prettier": "^1.5.3"
   }
 }
