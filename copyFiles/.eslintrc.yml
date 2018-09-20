@@ -24,8 +24,6 @@ rules:
   quotes: ["error", "single"]
   # trailing commas are mandatory
   comma-dangle: ["error", "always"]
-  # spaces inside non-empty objects between brackets & content
-  object-curly-spacing: ["error", "always"]
   # indentation made with spaces not tabs
   indent: ["error", 4]
   # lines are max. 100 signs long
