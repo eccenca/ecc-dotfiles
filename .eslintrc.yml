@@ -1,12 +1,11 @@
 extends:
-  - airbnb
-  - plugin:react/recommended
-  - prettier
-  - prettier/react
+- airbnb
+- plugin:react/recommended
+
 plugins:
-  - react
-  - jsx-a11y
-  - import
+- react
+- jsx-a11y
+- import
 env:
   browser: true
   es6: true
@@ -17,20 +16,18 @@ globals:
   __WEBPACK__: true
   __VERSION__: true
 parserOptions:
-   ecmaFeatures:
-     # enable JSX support
-      jsx: true
+  ecmaFeatures:
+    # enable JSX support
+    jsx: true
 rules:
-  # use only single quotes/backquotes for strings 
+  # use only single quotes/backquotes for strings
   quotes: ["error", "single"]
   # trailing commas are mandatory
-  comma-dangle: ["error", "always"]
-  # spaces inside non-empty objects between brackets & content
-  object-curly-spacing: ["error", "always"] 
+  comma-dangle: ["error", "always-multiline"]
   # indentation made with spaces not tabs
-  indent: ["error", 4]
+  indent: ["error", 4, { "ignoreComments": true }]
   # lines are max. 100 signs long
-  max-len: ["error", { "code": 100 }]  
+  max-len: ["error", { "code": 100 }]
   # a line ends with semicolon, period
   semi: ["error", "always"]
   # addon to 'semi', cares about spaces before and after semicolon usage
@@ -74,10 +71,10 @@ rules:
       ]
     }
   ]
-  # limit the max amount of conditionals 
+  # limit the max amount of conditionals
   complexity: ["error", { "max": 4 }]
   # allow functions with a maximum of 50 lines
-  max-lines-per-function: ["error", { "max": 50 }]
+  max-lines-per-function: ["error", { "max": 50, "skipBlankLines": true, "skipComments": true}]
   react/jsx-no-bind: ["warn"]
   react/forbid-prop-types: ["warn"]
   react/prefer-es6-class: ["warn"]
@@ -86,4 +83,4 @@ rules:
   react/sort-comp: ["warn"]
   react/jsx-boolean-value: ["off"]
   # align closing react component bracket with opening bracket
-  react/jsx-closing-bracket: [1, "line-aligned"]
+  react/jsx-closing-bracket-location: [1, "line-aligned"]
