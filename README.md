@@ -26,7 +26,7 @@ or add it as an init script to the package.json to run it after each `npm instal
     "prepublish": "npm run init && npm run build"
   },
   "devDependencies": {
-    "ecc-dotfiles": "^1.6.0"
+    "ecc-dotfiles": "^2.6.0"
   }
 }
 ```

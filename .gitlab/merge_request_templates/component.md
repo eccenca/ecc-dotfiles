@@ -27,7 +27,6 @@ I confirm that regarding my changed code...
 
 - [ ] stores and helper functions are unit tested
 - [ ] works in a preferred browser (esp. CSS fixes)
-- [ ] queries are working performant and where checked by a SPARQL expert
 
 ***Code Documentation***
 
