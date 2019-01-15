@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog's Format](http://keepachangelog.com/).
 
+## [2.6.1] 2019-01-15
+### Changed
+- max chars per line from 100 to 120
+
+### Fixed
+- clashing indent/jsx-indent rules
+
 ## [2.6.0] 2018-12-21
 
 ### Changed
