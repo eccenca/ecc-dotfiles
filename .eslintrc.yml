@@ -27,7 +27,7 @@ rules:
   # indentation made with spaces not tabs
   indent: ["error", 4, { "ignoreComments": true }]
   # lines are max. 100 signs long
-  max-len: ["error", { "code": 100 }]
+  max-len: ["error", { "code": 120 }]
   # a line ends with semicolon, period
   semi: ["error", "always"]
   # addon to 'semi', cares about spaces before and after semicolon usage
@@ -84,3 +84,6 @@ rules:
   react/jsx-boolean-value: ["off"]
   # align closing react component bracket with opening bracket
   react/jsx-closing-bracket-location: [1, "line-aligned"]
+  # disable checks as default eslint indent rule already do it
+  react/jsx-indent: ["off"]
+  react/jsx-indent-props: ["off"]
