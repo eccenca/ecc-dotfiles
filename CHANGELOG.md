@@ -3,8 +3,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog's Format](http://keepachangelog.com/).
 
 ## [Unreleased]
+### Added
+- esLint rules `arrow-parens`
 
-TODO: add at least one Added, Changed, Deprecated, Removed, Fixed or Security section
+### Removed
+- esLint rule `max-lines-per-function` as jsx render methods are bigger most of the time
 
 ## [2.6.1] 2019-01-15
 ### Changed
