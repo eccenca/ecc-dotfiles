@@ -1,6 +1,6 @@
 {
   "name": "@eccenca/dotfiles",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "bin": {
     "ecc-link-dotfiles": "./install.js"
   },
@@ -8,7 +8,7 @@
   "main": "./install.js",
   "scripts": {
     "test": "./install.js && eslint --print-config .eslintrc.yml && eslint --print-config .eslintrc.yml",
-    "lint": "eslint ./install.js --fix"
+    "lint": "eslint ./install.js --fix ; eslint ./test/linting.js"
   },
   "repository": {
     "type": "git",
