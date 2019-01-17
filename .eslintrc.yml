@@ -20,6 +20,10 @@ parserOptions:
     # enable JSX support
     jsx: true
 rules:
+  # FIXME: deactivate rules for arrow functions until we find out why they fail sometimes
+  # READ more about it here: https://github.com/eslint/eslint/issues/10137
+  array-callback-return: "off"
+  arrow-body-style: "off"
   # use only single quotes/backquotes for strings
   quotes: ["error", "single"]
   # trailing commas are mandatory
