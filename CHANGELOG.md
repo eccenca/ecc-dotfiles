@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Ch
 
 ## [Unreleased]
 
-TODO: add at least one Added, Changed, Deprecated, Removed, Fixed or Security section
+### Remove
+- eslint rules `array-callback-return` and `arrow-body-style` due to a bug in babel-eslint.
 
 ## [2.6.2] 2019-01-17
 ### Added
