@@ -43,7 +43,7 @@ const templatePath = path.join(__dirname, 'templates');
 // read all dotfiles
 const templateFiles = fs.readdirSync(templatePath);
 
-templateFiles.forEach((templateFileName) => {
+templateFiles.forEach(templateFileName => {
     const ignoreFileName = `.${templateFileName.replace('.template', '')}`;
 
     const ignoreFile = path.join(destFolder, ignoreFileName);
@@ -64,7 +64,7 @@ templateFiles.forEach((templateFileName) => {
         const ignored = [];
         let result = [];
         let addAll = false;
-        contents.forEach((line) => {
+        contents.forEach(line => {
             if (line === '') {
                 result.push(line);
                 return;
