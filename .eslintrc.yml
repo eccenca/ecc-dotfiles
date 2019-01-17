@@ -73,6 +73,7 @@ rules:
   ]
   # limit the max amount of conditionals
   complexity: ["error", { "max": 4 }]
+  arrow-parens: [2, "as-needed"]
   # allow functions with a maximum of 50 lines
   max-lines-per-function: ["error", { "max": 50, "skipBlankLines": true, "skipComments": true}]
   react/jsx-no-bind: ["warn"]

@@ -8,7 +8,7 @@
   "main": "./install.js",
   "scripts": {
     "test": "./install.js && eslint --print-config .eslintrc.yml && eslint --print-config .eslintrc.yml",
-    "lint": "eslint ./install.js --fix"
+    "lint": "eslint ./install.js --fix ; eslint ./test/linting.js"
   },
   "repository": {
     "type": "git",
