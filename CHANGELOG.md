@@ -4,10 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Ch
 
 ## [Unreleased]
 
-### Remove
-- eslint rules `array-callback-return` and `arrow-body-style` due to a bug in babel-eslint.
+### Removed
+- eslint rule `array-callback-return` due to a bug in babel-eslint.
+- eslint rule `arrow-body-style` due to a bug in babel-eslint.
+- eslint rule `implicit-arrow-linebreak` due to a bug in babel-eslint.
 
 ## [2.6.2] 2019-01-17
+
 ### Added
 - esLint rules `arrow-parens`
 
@@ -15,6 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Ch
 - esLint rule `max-lines-per-function` as jsx render methods are bigger most of the time
 
 ## [2.6.1] 2019-01-15
+
 ### Changed
 - max chars per line from 100 to 120
 

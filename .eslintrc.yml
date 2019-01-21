@@ -24,6 +24,7 @@ rules:
   # READ more about it here: https://github.com/eslint/eslint/issues/10137
   array-callback-return: "off"
   arrow-body-style: "off"
+  implicit-arrow-linebreak: "off"
   # use only single quotes/backquotes for strings
   quotes: ["error", "single"]
   # trailing commas are mandatory
