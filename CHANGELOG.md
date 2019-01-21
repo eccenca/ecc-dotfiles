@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog's Format](http://keepachangelog.com/).
 
-## [Unreleased]
+## [2.6.3] 2019-01-21
 
 ### Removed
 - eslint rule `array-callback-return` due to a bug in babel-eslint.
