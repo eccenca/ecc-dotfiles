@@ -77,7 +77,7 @@ rules:
     }
   ]
   # limit the max amount of conditionals
-  complexity: ["error", { "max": 4 }]
+  complexity: ["error", { "max": 14 }]
   arrow-parens: [2, "as-needed"]
   react/jsx-no-bind: ["warn"]
   react/forbid-prop-types: ["warn"]
