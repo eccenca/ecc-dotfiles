@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep A Changelog's Format](http://keepachangelog.com/).
 
+## [2.6.4] 2019-05-16
+
+### Changed
+- change eslint rule `complexity` from 4 to 14
+
 ## [2.6.3] 2019-01-21
 
 ### Removed
